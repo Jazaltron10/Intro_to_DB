@@ -22,21 +22,21 @@ try:
     print("Connection established...")
     cursor = db.cursor()
 
-    # Execute SQL commands from the SQL file
-    with open('task_6.sql', 'r') as file:
-        sql_script = file.read()
+    # # Execute SQL commands from the SQL file
+    # with open('task_6.sql', 'r') as file:
+    #     sql_script = file.read()
 
-    # Split the script into individual commands
-    sql_commands = sql_script.split(';')
+    # # Split the script into individual commands
+    # sql_commands = sql_script.split(';')
 
-    for command in sql_commands:
-        if command.strip():
-            cursor.execute(command)
-            # Fetch all results to clear the cursor
-            if cursor.with_rows:
-                results = cursor.fetchall()
-                for result in results:
-                    print(result)
+    # for command in sql_commands:
+    #     if command.strip():
+    #         cursor.execute(command)
+    #         # Fetch all results to clear the cursor
+    #         if cursor.with_rows:
+    #             results = cursor.fetchall()
+    #             for result in results:
+    #                 print(result)
 
     # Commit the transaction to persist changes
     db.commit()
