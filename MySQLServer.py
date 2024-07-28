@@ -28,7 +28,7 @@ try:
 
     # Switch to the new database
     db.database = 'alx_book_store'
-    
+
     # Execute SQL commands from the SQL file
     with open('task_6.sql', 'r') as file:
         sql_script = file.read()
@@ -47,7 +47,7 @@ try:
 
     # Commit the transaction to persist changes
     db.commit()
-except Error as err:
+except mysql.connector.Error as err:
     if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
         print("Something is wrong with your username or password")
     elif err.errno == errorcode.ER_BAD_DB_ERROR:
