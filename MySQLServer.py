@@ -22,21 +22,28 @@ try:
     print("Connection established...")
     cursor = db.cursor()
 
-    # # Execute SQL commands from the SQL file
-    # with open('task_6.sql', 'r') as file:
-    #     sql_script = file.read()
+    # Create database if it doesn't exist
+    cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
+    print("Database 'alx_book_store' created successfully!")
 
-    # # Split the script into individual commands
-    # sql_commands = sql_script.split(';')
+    # Switch to the new database
+    db.database = 'alx_book_store'
+    
+    # Execute SQL commands from the SQL file
+    with open('task_6.sql', 'r') as file:
+        sql_script = file.read()
 
-    # for command in sql_commands:
-    #     if command.strip():
-    #         cursor.execute(command)
-    #         # Fetch all results to clear the cursor
-    #         if cursor.with_rows:
-    #             results = cursor.fetchall()
-    #             for result in results:
-    #                 print(result)
+    # Split the script into individual commands
+    sql_commands = sql_script.split(';')
+
+    for command in sql_commands:
+        if command.strip():
+            cursor.execute(command)
+            # Fetch all results to clear the cursor
+            if cursor.with_rows:
+                results = cursor.fetchall()
+                for result in results:
+                    print(result)
 
     # Commit the transaction to persist changes
     db.commit()
